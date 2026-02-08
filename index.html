@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  max-width: 350px;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: pop 1s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+h1 {
+  color: #ff416c;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  color: #444;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff416c;
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.hearts span {
+  position: fixed;
+  bottom: -20px;
+  color: red;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-800px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Valentine 💕</h1>
+  <p>
+    Tum meri zindagi ka sabse khoobsurat hissa ho 🌹  
+    Har pal, har dua sirf tumhare naam ❤️
+  </p>
+  <button onclick="playMusic()">Tap for Surprise 💖</button>
+</div>
+
+<audio id="song">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7e4b8c5c58.mp3" type="audio/mpeg">
+</audio>
+
+<div class="hearts"></div>
+
+<script>
+function playMusic() {
+  document.getElementById("song").play();
+  for(let i=0;i<20;i++){
+    let heart = document.createElement("span");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*3 + 3) + "s";
+    document.querySelector(".hearts").appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  }
+}
+</script>
+
+</body>
+</html>
